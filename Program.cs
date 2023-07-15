@@ -1,7 +1,31 @@
+using KindHeartCharity.Data;
+using KindHeartCharity.Models.Domain;
+using KindHeartCharity.Repositories.Implement;
+using KindHeartCharity.Repositories.Interface;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Add DbContext
+builder.Services.AddDbContext<AuthDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AuthenticationConnectionString")));
+
+
+
+// For Identity  
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<AuthDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.ConfigureApplicationCookie(option => option.LoginPath = "/UserAuthentication/Login");
+
+
+
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 var app = builder.Build();
 
@@ -18,7 +42,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
+
 
 app.MapControllerRoute(
     name: "default",

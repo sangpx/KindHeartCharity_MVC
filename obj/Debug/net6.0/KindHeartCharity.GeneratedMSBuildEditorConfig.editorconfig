@@ -16,12 +16,12 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Demo ASP\KindHeartCharity\KindHeartCharity\KindHeartCharity
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/Shared/Error.cshtml]
@@ -30,6 +30,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/UserAuthentication/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckF1dGhlbnRpY2F0aW9uXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/UserAuthentication/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckF1dGhlbnRpY2F0aW9uXFJlZ2lzdGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/_ViewImports.cshtml]

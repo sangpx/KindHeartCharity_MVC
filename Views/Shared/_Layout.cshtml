@@ -1,49 +1,271 @@
-﻿<!DOCTYPE html>
+﻿﻿@{
+    string userName = User.Identity.Name;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - KindHeartCharity</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/KindHeartCharity.styles.css" asp-append-version="true" />
+    <title>@ViewData["Title"] KindHeartCharity</title>
+    <!-- CSS FILES -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="/css/templatemo-kind-heart-charity.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">KindHeartCharity</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-8 col-12 d-flex flex-wrap">
+                    <p class="d-flex me-4 mb-0">
+                        <i class="bi-geo-alt me-2"></i>
+                       96 Dinh Cong, Hoang Mai, Hanoi
+                    </p>
+
+                    <p class="d-flex mb-0">
+                        <i class="bi-envelope me-2"></i>
+
+                        <a href="mailto:info@company.com">
+                            info@company.com
+                        </a>
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
+                    <ul class="social-icon">
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-twitter"></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-facebook"></a>
+                        </li>
+
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-instagram"></a>
+                        </li>
+
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-youtube"></a>
+                        </li>
+
+                        <li class="social-icon-item">
+                            <a href="#" class="social-icon-link bi-whatsapp"></a>
                         </li>
                     </ul>
                 </div>
+
             </div>
-        </nav>
+        </div>
     </header>
+
+    <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+        <div class="container">
+            <a class="navbar-brand" asp-action="Index" asp-controller="Home">
+                <img src="/images/logo.png" class="logo img-fluid" asp-action="Index" asp-controller="Home" alt="Kind Heart Charity">
+                <span asp-action="Index" asp-controller="Home">
+                    Kind Heart Charity
+                    <small asp-action="Index" asp-controller="Home">Non-profit Organization</small>
+                </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" asp-action="Index" asp-controller="Home">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" asp-action="Index" asp-controller="Home">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" asp-action="Index" asp-controller="Home">Causes</a>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link click-scroll dropdown-toggle" href="#section_5"
+                           id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">News</a>
+
+                        <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                            <li><a class="dropdown-item" asp-action="Index" asp-controller="Home">News Listing</a></li>
+
+                            <li><a class="dropdown-item" asp-action="Index" asp-controller="Home">News Detail</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" asp-action="Index" asp-controller="Home">Contact</a>
+                    </li>
+
+                   
+
+                    @if (!string.IsNullOrEmpty(userName))
+                    {
+                        if (userName == "admin" || User.IsInRole("admin"))
+                            {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" asp-action="Index" asp-controller="Admin">@userName</a>
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-item" asp-action="Logout" asp-controller="UserAuthentication">Logout</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                           
+                        }
+                        else
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link click-scroll dropdown-toggle"
+                                   id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                   aria-expanded="false">Hello, @userName</a>
+
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-item" asp-action="Logout" asp-controller="UserAuthentication">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }  
+                    }
+
+                    @if (string.IsNullOrEmpty(userName))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Login" asp-controller="UserAuthentication">Login</a>
+                        </li>
+                    }
+
+
+                    <li class="nav-item ms-3">
+                        <a class="nav-link custom-btn custom-border-btn btn" asp-action="Index" asp-controller="Home">Donate</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="site-footer">
         <div class="container">
-            &copy; 2023 - KindHeartCharity - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row">
+                <div class="col-lg-3 col-12 mb-4">
+                    <img src="/images/logo.png" class="logo img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <h5 class="site-footer-title mb-3">Quick Links</h5>
+
+                    <ul class="footer-menu">
+                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">Our Story</a></li>
+
+                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">Newsroom</a></li>
+
+                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">Causes</a></li>
+
+                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">Become a volunteer</a></li>
+
+                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">Partner with us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12 mx-auto">
+                    <h5 class="site-footer-title mb-3">Contact Infomation</h5>
+
+                    <p class="text-white d-flex mb-2">
+                        <i class="bi-telephone me-2"></i>
+
+                        <a href="tel: 0123-456-789" class="site-footer-link">
+                           0123-456-789
+                        </a>
+                    </p>
+
+                    <p class="text-white d-flex">
+                        <i class="bi-envelope me-2"></i>
+
+                        <a href="mailto:info@yourgmail.com" class="site-footer-link">
+                            donate@charity.org
+                        </a>
+                    </p>
+
+                    <p class="text-white d-flex mt-3">
+                        <i class="bi-geo-alt me-2"></i>
+                        96 Dinh Cong, Hoang Mai, Hanoi
+                    </p>
+
+                    <a href="#" class="custom-btn btn mt-3">Get Direction</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="site-footer-bottom">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-7 col-12">
+                        <p class="copyright-text mb-0">
+                            Copyright © 2023 <a href="#">Kind Heart</a> Charity Org.
+                            DesignBy: <a href="https://www.facebook.com/besann48" target="_blank">G02</a>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">
+                        <ul class="social-icon">
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-twitter"></a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-facebook"></a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-instagram"></a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-linkedin"></a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="https://youtube.com/templatemo" class="social-icon-link bi-youtube"></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.sticky.js"></script>
+    <script src="/js/click-scroll.js"></script>
+    <script src="/js/counter.js"></script>
+    <script src="/js/custom.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
