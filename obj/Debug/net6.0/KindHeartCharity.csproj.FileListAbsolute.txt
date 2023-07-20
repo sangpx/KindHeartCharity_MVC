@@ -245,3 +245,10 @@ D:\Demo ASP\KindHeartCharity\KindHeartCharity\KindHeartCharity\bin\Debug\net6.0\
 D:\Demo ASP\KindHeartCharity\KindHeartCharity\KindHeartCharity\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\Demo ASP\KindHeartCharity\KindHeartCharity\KindHeartCharity\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Demo ASP\KindHeartCharity\KindHeartCharity\KindHeartCharity\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\Demo ASP\KindHeartCharity\KindHeartCharity\KindHeartCharity\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Demo ASP\KindHeartCharity\KindHeartCharity\KindHeartCharity\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Demo ASP\KindHeartCharity\KindHeartCharity\KindHeartCharity\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Demo ASP\KindHeartCharity\KindHeartCharity\KindHeartCharity\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Demo ASP\KindHeartCharity\KindHeartCharity\KindHeartCharity\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+D:\Demo ASP\KindHeartCharity\KindHeartCharity\KindHeartCharity\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+D:\Demo ASP\KindHeartCharity\KindHeartCharity\KindHeartCharity\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll

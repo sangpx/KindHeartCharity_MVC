@@ -109,38 +109,34 @@
                         <a class="nav-link click-scroll" asp-action="Index" asp-controller="Home">Contact</a>
                     </li>
 
-                   
-
-                    @if (!string.IsNullOrEmpty(userName))
+                    @if (User.IsInRole("admin"))
                     {
-                        if (userName == "admin" || User.IsInRole("admin"))
-                            {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" asp-action="Index" asp-controller="Admin">@userName</a>
-                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li class="nav-item">
-                                        <a class="nav-link dropdown-item" asp-action="Logout" asp-controller="UserAuthentication">Logout</a>
-                                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" asp-action="GetAll" asp-controller="Admin">Admin</a>
+                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                <li class="nav-item">
+                                    <a class="nav-link dropdown-item" asp-action="Logout" asp-controller="UserAuthentication">LogOut</a>
+                                </li>
 
-                                </ul>
-                            </li>
-                           
-                        }
-                        else
-                        {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link click-scroll dropdown-toggle"
-                                   id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown"
-                                   aria-expanded="false">Hello, @userName</a>
-
-                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li class="nav-item">
-                                        <a class="nav-link dropdown-item" asp-action="Logout" asp-controller="UserAuthentication">Logout</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        }  
+                            </ul>
+                        </li>
                     }
+
+                    @if (User.IsInRole("user"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">Hello, @User.Identity.Name</a>
+
+                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                <li class="nav-item">
+                                    <a class="nav-link dropdown-item" asp-action="Logout" asp-controller="UserAuthentication">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                           
+                     }
 
                     @if (string.IsNullOrEmpty(userName))
                     {
@@ -266,6 +262,10 @@
     <script src="/js/click-scroll.js"></script>
     <script src="/js/counter.js"></script>
     <script src="/js/custom.js"></script>
+
+   
+
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

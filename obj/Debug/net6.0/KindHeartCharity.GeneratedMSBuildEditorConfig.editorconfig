@@ -16,8 +16,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Demo ASP\KindHeartCharity\KindHeartCharity\KindHeartCharity
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/Admin/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+[D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/Admin/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/Admin/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/Admin/GetAll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cR2V0QWxsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/Admin/GetById.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cR2V0QnlJZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/Admin/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Demo ASP/KindHeartCharity/KindHeartCharity/KindHeartCharity/Views/Home/Index.cshtml]

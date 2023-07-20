@@ -21,7 +21,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="mb-4">
-                            <h3 class="text-center">Sign Up</h3>
+                            <h3 class="text-center">Register</h3>
                         </div>
                         <form asp-action ="Register" method="post">
                             <div class="form-group first">
@@ -61,7 +61,7 @@
                                 <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
                             </div>
 
-                            <input type="submit" value="Sign Up" class="btn text-white btn-block btn-primary">
+                            <input type="submit" value="Register" class="btn text-white btn-block btn-primary">
 
                            @* @if (TempData["msg"] != null)
                             {
@@ -70,7 +70,7 @@
                                 </div>
                             }*@
 
-                            <a href="/UserAuthentication/Login" class="d-block text-left my-4 text-muted text-center"> Sign In</a>
+                            <a href="/UserAuthentication/Login" class="d-block text-left my-4 text-muted text-center"> Login</a>
                         </form>
                     </div>
                 </div>

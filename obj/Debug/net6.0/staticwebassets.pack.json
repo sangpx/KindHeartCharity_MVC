@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\KindHeartCharity.bundle.scp.css"
     },
     {
+      "Id": "D:\\Demo ASP\\KindHeartCharity\\KindHeartCharity\\KindHeartCharity\\wwwroot\\css\\Dashboard\\dashboard.css",
+      "PackagePath": "staticwebassets\\css\\Dashboard\\dashboard.css"
+    },
+    {
       "Id": "D:\\Demo ASP\\KindHeartCharity\\KindHeartCharity\\KindHeartCharity\\wwwroot\\css\\LoginCss\\.DS_Store",
       "PackagePath": "staticwebassets\\css\\LoginCss\\.DS_Store"
     },
@@ -239,6 +243,10 @@
     {
       "Id": "D:\\Demo ASP\\KindHeartCharity\\KindHeartCharity\\KindHeartCharity\\wwwroot\\images\\smiling-casual-woman-dressed-volunteer-t-shirt-with-badge.jpg",
       "PackagePath": "staticwebassets\\images\\smiling-casual-woman-dressed-volunteer-t-shirt-with-badge.jpg"
+    },
+    {
+      "Id": "D:\\Demo ASP\\KindHeartCharity\\KindHeartCharity\\KindHeartCharity\\wwwroot\\js\\AdminManagement\\index.js",
+      "PackagePath": "staticwebassets\\js\\AdminManagement\\index.js"
     },
     {
       "Id": "D:\\Demo ASP\\KindHeartCharity\\KindHeartCharity\\KindHeartCharity\\wwwroot\\js\\LoginJS\\bootstrap.min.js",

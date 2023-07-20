@@ -24,11 +24,6 @@ namespace KindHeartCharity.Repositories.Implement
         }
 
 
-        /// <summary>
-        /// Register
-        /// </summary>
-        /// <param name="registerRequestDto"></param>
-        /// <returns></returns>
         public async Task<Status> RegisterAsync(RegisterRequestDto registerRequestDto)
         {
             var status = new Status();
@@ -39,7 +34,7 @@ namespace KindHeartCharity.Repositories.Implement
                 status.Message = "User already exist!";
                 return status;
             }
-            User user = new User()
+            User user = new User
             {
                 SecurityStamp = Guid.NewGuid().ToString(),
                 Email = registerRequestDto.Email,
@@ -74,11 +69,7 @@ namespace KindHeartCharity.Repositories.Implement
         }
 
 
-        /// <summary>
-        /// Login
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
+
         public async Task<Status> LoginAsync(LoginRequestDto loginRequestDto)
         {
             var status = new Status();
@@ -132,10 +123,7 @@ namespace KindHeartCharity.Repositories.Implement
         }
 
 
-        /// <summary>
-        /// LogOut
-        /// </summary>
-        /// <returns></returns>
+
         public async Task LogOutAsync()
         {
             await signInManager.SignOutAsync();

@@ -7,5 +7,7 @@ namespace KindHeartCharity.Data
     public class AuthDbContext : IdentityDbContext<User>
     {
         public AuthDbContext(DbContextOptions<AuthDbContext> options) : base(options) { }
+
+        public DbSet<Post> posts { get; set; }
     }
 }
