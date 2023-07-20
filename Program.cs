@@ -26,6 +26,10 @@ builder.Services.ConfigureApplicationCookie(option => option.LoginPath = "/UserA
 
 
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IAdminManageRepository, AdminManageRepository>();
+builder.Services.AddScoped<IFileService, FileService>();
+
+
 
 var app = builder.Build();
 

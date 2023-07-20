@@ -1,0 +1,57 @@
+﻿@model KindHeartCharity.Models.Domain.Post
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = null;
+}
+
+<!-- CSS FILES -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="/css/bootstrap-icons.css" rel="stylesheet">
+
+<link href="/css/templatemo-kind-heart-charity.css" rel="stylesheet">
+
+<h1>Update</h1>
+
+<h4>Post</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PostId" />
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <input asp-for="Content" class="form-control" />
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostImageURL" class="control-label"></label>
+                <input asp-for="PostImageURL" class="form-control" />
+                <span asp-validation-for="PostImageURL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostDate" class="control-label"></label>
+                <input asp-for="PostDate" class="form-control" />
+                <span asp-validation-for="PostDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetAll">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

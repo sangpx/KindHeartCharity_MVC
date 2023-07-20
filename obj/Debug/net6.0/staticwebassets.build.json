@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pJR83h/i0I/SfgwHxDnRJJHGIzNkPGkovn58DjuIkt8=",
+  "Hash": "VG2bwXPzMdlE3wC2R/WSLR8vGzBen6xd36TcacWnIf8=",
   "Source": "KindHeartCharity",
   "BasePath": "_content/KindHeartCharity",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\bootstrap-icons.css"
+    },
+    {
+      "Identity": "D:\\Demo ASP\\KindHeartCharity\\KindHeartCharity\\KindHeartCharity\\wwwroot\\css\\Dashboard\\dashboard.css",
+      "SourceId": "KindHeartCharity",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Demo ASP\\KindHeartCharity\\KindHeartCharity\\KindHeartCharity\\wwwroot\\",
+      "BasePath": "_content/KindHeartCharity",
+      "RelativePath": "css/Dashboard/dashboard.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Dashboard\\dashboard.css"
     },
     {
       "Identity": "D:\\Demo ASP\\KindHeartCharity\\KindHeartCharity\\KindHeartCharity\\wwwroot\\css\\LoginCss\\.DS_Store",
@@ -1052,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\smiling-casual-woman-dressed-volunteer-t-shirt-with-badge.jpg"
+    },
+    {
+      "Identity": "D:\\Demo ASP\\KindHeartCharity\\KindHeartCharity\\KindHeartCharity\\wwwroot\\js\\AdminManagement\\index.js",
+      "SourceId": "KindHeartCharity",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Demo ASP\\KindHeartCharity\\KindHeartCharity\\KindHeartCharity\\wwwroot\\",
+      "BasePath": "_content/KindHeartCharity",
+      "RelativePath": "js/AdminManagement/index.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\AdminManagement\\index.js"
     },
     {
       "Identity": "D:\\Demo ASP\\KindHeartCharity\\KindHeartCharity\\KindHeartCharity\\wwwroot\\js\\bootstrap.min.js",

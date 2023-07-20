@@ -2,6 +2,8 @@
 using KindHeartCharity.Repositories.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace KindHeartCharity.Controllers
 {
@@ -25,6 +27,7 @@ namespace KindHeartCharity.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
+
         public async Task<IActionResult> Login(LoginRequestDto loginRequestDto)
         {
             if (!ModelState.IsValid)
@@ -69,8 +72,7 @@ namespace KindHeartCharity.Controllers
         /// Register Admin
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
-        [AllowAnonymous]
+
         public async Task<IActionResult> RegisterAdmin()
         {
             RegisterRequestDto registerRequestDto = new RegisterRequestDto
@@ -79,11 +81,11 @@ namespace KindHeartCharity.Controllers
                 Email = "admin@gmail.com",
                 FirstName = "admin",
                 LastName = "admin",
-                Password = "Admin@123456"
+                Password = "admin@123456"
             };
             registerRequestDto.Role = "admin";
             var result = await authRepository.RegisterAsync(registerRequestDto);
-            RedirectToAction("Index", "Admin", new { area = "admin" });
+
             return Ok(result);
         }
 
