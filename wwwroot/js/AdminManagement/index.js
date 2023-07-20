@@ -3,11 +3,13 @@
   var btnDeletes = document.querySelectorAll(".btn-delete");
   var btnDeleteConfirm = document.querySelector(".btn-delete-confirm");
   var btnCanel = document.querySelector(".btn-cancel");
+  var overlay = document.querySelector(".overlay");
 
   btnDeletes.forEach((item) => {
     item.onclick = () => {
       // <a type="button" class="btn-cancel close" data-dismiss="modal"><i class="bi bi-x-lg"></i></a>
       modalDelete.classList.add("show");
+      overlay.classList.add("show");
       var postId = item.getAttribute("data-post-id");
       btnDeleteConfirm.addEventListener("click", () => {
         try {
@@ -32,6 +34,7 @@
 
       btnCanel.onclick = () => {
         modalDelete.classList.remove("show");
+        overlay.classList.remove("show");
       };
     };
   });
@@ -54,13 +57,13 @@ var loadPosts = () => {
                             <th style="width: 350px">
                                Content
                             </th>
-                            <th style="width: 250px">
+                            <th style="width: 300px">
                                Description
                             </th>
-                            <th style="width: 300px">
+                            <th style="width: 200px">
                                 PostImageURL
                             </th>
-                            <th style="width: 150px">
+                            <th style="width: 200px">
                                PostDate
                             </th>
                             <th style="width: 200px">
@@ -100,23 +103,25 @@ var loadPosts = () => {
                             </td>
                         </tr>
 
-                        <div class="modal" id="deleteModal">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title">Are you sure?</h4>
-                               
-                                </div>
-                                <div class="modal-body">
-                                  <p>Do you really want to delete these records? This process cannot be undone.</p>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">Close</button>
-                                  <button class="btn btn-danger btn-delete-confirm">Delete</button>
-                                </div>
-                              </div>[]
-                            </div>
-                        </div>
+                      <div class="overlay"></div>
+                          <div class="modal" id="deleteModal">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">Are you sure?</h4>
+                                
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Do you really want to delete these records? This process cannot be undone.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">Close</button>
+                                    <button class="btn btn-danger btn-delete-confirm">Delete</button>
+                                  </div>
+                                </div>[]
+                              </div>
+                          </div>
+                        
                     `;
         });
         postListHtml += "</tbody>" + "</table>";
