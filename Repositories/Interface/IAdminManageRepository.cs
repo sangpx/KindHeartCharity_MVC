@@ -10,9 +10,7 @@ namespace KindHeartCharity.Repositories.Interface
 
         Task<Post> CreateAsync(Post post);
 
-        //Task CreateAsync(Post post, IFormFile image);
-
-        bool UpdateAsync(Post post);
+        Task<Object> UpdateAsync(Guid PostId, string Content, string Description);
 
         Task<Post> DeleteAsync(Guid id);
     }

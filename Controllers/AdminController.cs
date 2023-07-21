@@ -1,8 +1,12 @@
 ﻿using Humanizer.Localisation;
+using KindHeartCharity.Data;
 using KindHeartCharity.Models.Domain;
+using KindHeartCharity.Models.DTO;
 using KindHeartCharity.Repositories.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace KindHeartCharity.Controllers
 {
@@ -13,7 +17,8 @@ namespace KindHeartCharity.Controllers
         private readonly IAdminManageRepository adminManageRepository;
         private readonly IFileService fileService;
 
-        public AdminController(IAdminManageRepository adminManageRepository, IFileService fileService)
+        public AdminController(IAdminManageRepository adminManageRepository,
+            IFileService fileService)
         {
             this.adminManageRepository = adminManageRepository;
             this.fileService = fileService;
@@ -52,21 +57,6 @@ namespace KindHeartCharity.Controllers
         {
             if (!ModelState.IsValid) { return View(post); }
 
-
-            //if (post.ImageFile != null)
-            //{
-            //    var fileResult = fileService.SaveImage(post.ImageFile);
-            //    if (fileResult.Item1 == 0)
-            //    {
-            //        TempData["msg"] = "File could not saved";
-            //        RedirectToAction("GetAll", "Admin");
-            //    }
-
-            //    var imageName = fileResult.Item2;
-            //    post.PostImageURL = imageName;
-
-            //}
-
             if (post.ImageFile != null)
             {
                 var fileResult = fileService.SaveImage(post.ImageFile);
@@ -93,16 +83,46 @@ namespace KindHeartCharity.Controllers
             return View(dataExisting);
         }
 
-        [HttpPost]
-        public IActionResult Update(Post post)
+
+        public async Task<IActionResult> UpdateConfirm(Guid PostId, string Content, string Description)
         {
-            if (!ModelState.IsValid)
-                return View(post);
-            var result = adminManageRepository.UpdateAsync(post);
-            return View(result);
+
+            var result = await adminManageRepository.UpdateAsync(PostId, Content, Description);
+            return Ok(result);
 
         }
 
+        //[HttpPut("{postId}")]
+        //public async Task<IActionResult> UpdateConfirm(Guid postId, [FromBody] PostUpdateRequestDto postUpdateRequestDto)
+        //{
+        //    if (!ModelState.IsValid) { return View(postUpdateRequestDto); }
+
+        //    var postDomainModel = new Post
+        //    {
+        //        Content = postUpdateRequestDto.Content,
+        //        Description = postUpdateRequestDto.Description,
+        //        PostImageURL = postUpdateRequestDto.PostImageURL,
+        //        PostDate = postUpdateRequestDto.PostDate,
+        //    };
+
+        //    postDomainModel = await adminManageRepository.UpdateAsync(postId, postDomainModel);
+
+        //    if (postDomainModel == null) { return NotFound(); }
+
+        //    var postDto = new PostUpdateRequestDto
+        //    {
+        //        Content = postDomainModel.Content,
+        //        Description = postDomainModel.Description,
+        //        PostImageURL = postDomainModel.PostImageURL,
+        //        PostDate = postDomainModel.PostDate,
+
+        //    };
+
+        //    return View(postDto);
+
+
+
+        //}
 
         public async Task<IActionResult> Delete(Guid id)
         {
@@ -113,8 +133,6 @@ namespace KindHeartCharity.Controllers
 
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-
-            if (!ModelState.IsValid) { return View(); }
 
             var deletePost = await adminManageRepository.DeleteAsync(id);
 

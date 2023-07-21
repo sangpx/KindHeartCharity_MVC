@@ -7,100 +7,100 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KindHeartCharity.Controllers
 {
-    public class UserAuthenticationController : Controller
-    {
-        private readonly IAuthRepository authRepository;
+     public class UserAuthenticationController : Controller
+     {
+          private readonly IAuthRepository authRepository;
 
-        public UserAuthenticationController(IAuthRepository authRepository)
-        {
-            this.authRepository = authRepository;
-        }
-
-
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        /// <summary>
-        /// Login
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost]
-
-        public async Task<IActionResult> Login(LoginRequestDto loginRequestDto)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(loginRequestDto);
-            }
-            var result = await authRepository.LoginAsync(loginRequestDto);
-            if (result.StatusCode == 1)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                //TempData["msg"] = result.Message;
-                return RedirectToAction(nameof(Login));
-            }
-
-        }
-
-        public IActionResult Register()
-        {
-            return View();
-        }
+          public UserAuthenticationController(IAuthRepository authRepository)
+          {
+               this.authRepository = authRepository;
+          }
 
 
-        /// <summary>
-        /// Register
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterRequestDto registerRequestDto)
-        {
-            if (!ModelState.IsValid) { return View(registerRequestDto); }
-            registerRequestDto.Role = "user";
-            var result = await authRepository.RegisterAsync(registerRequestDto);
-            //TempData["msg"] = result.Message;
-            return RedirectToAction(nameof(Login));
-        }
+          public IActionResult Login()
+          {
+               return View();
+          }
+
+          /// <summary>
+          /// Login
+          /// </summary>
+          /// <returns></returns>
+          [HttpPost]
+
+          public async Task<IActionResult> Login(LoginRequestDto loginRequestDto)
+          {
+               if (!ModelState.IsValid)
+               {
+                    return View(loginRequestDto);
+               }
+               var result = await authRepository.LoginAsync(loginRequestDto);
+               if (result.StatusCode == 1)
+               {
+                    return RedirectToAction("Index", "Home");
+               }
+               else
+               {
+                    //TempData["msg"] = result.Message;
+                    return RedirectToAction(nameof(Login));
+               }
+
+          }
+
+          public IActionResult Register()
+          {
+               return View();
+          }
 
 
-        /// <summary>
-        /// Register Admin
-        /// </summary>
-        /// <returns></returns>
-
-        public async Task<IActionResult> RegisterAdmin()
-        {
-            RegisterRequestDto registerRequestDto = new RegisterRequestDto
-            {
-                UserName = "admin",
-                Email = "admin@gmail.com",
-                FirstName = "admin",
-                LastName = "admin",
-                Password = "admin@123456"
-            };
-            registerRequestDto.Role = "admin";
-            var result = await authRepository.RegisterAsync(registerRequestDto);
-
-            return Ok(result);
-        }
+          /// <summary>
+          /// Register
+          /// </summary>
+          /// <returns></returns>
+          [HttpPost]
+          public async Task<IActionResult> Register(RegisterRequestDto registerRequestDto)
+          {
+               if (!ModelState.IsValid) { return View(registerRequestDto); }
+               registerRequestDto.Role = "user";
+               var result = await authRepository.RegisterAsync(registerRequestDto);
+               //TempData["msg"] = result.Message;
+               return RedirectToAction(nameof(Login));
+          }
 
 
-        /// <summary>
-        /// Logout
-        /// </summary>
-        /// <returns></returns>
-        [Authorize]
-        public async Task<IActionResult> Logout()
-        {
-            await authRepository.LogOutAsync();
-            return RedirectToAction(nameof(Login));
-        }
-    }
+          /// <summary>
+          /// Register Admin
+          /// </summary>
+          /// <returns></returns>
+
+          //   public async Task<IActionResult> RegisterAdmin()
+          //   {
+          //        RegisterRequestDto registerRequestDto = new RegisterRequestDto
+          //        {
+          //             UserName = "Admin",
+          //             Email = "admin@gmail.com",
+          //             FirstName = "Admin",
+          //             LastName = "Admin",
+          //             Password = "Admin@123456"
+          //        };
+          //        registerRequestDto.Role = "admin";
+          //        var result = await authRepository.RegisterAsync(registerRequestDto);
+
+          //        return Ok(result);
+          //   }
+
+
+          /// <summary>
+          /// Logout
+          /// </summary>
+          /// <returns></returns>
+          [Authorize]
+          public async Task<IActionResult> Logout()
+          {
+               await authRepository.LogOutAsync();
+               return RedirectToAction(nameof(Login));
+          }
+     }
 
 
 }
