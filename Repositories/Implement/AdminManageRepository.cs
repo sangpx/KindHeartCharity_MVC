@@ -51,7 +51,9 @@ namespace KindHeartCharity.Repositories.Implement
             await authDbContext.SaveChangesAsync();
             return postExisting;
         }
-
-
+        public async Task<List<Post>> SearchByName(string name)
+        {
+            return await authDbContext.posts.Where(p => EF.Functions.Like(p.Content, $"%{name}%")).ToListAsync();
+        }
     }
 }

@@ -15,5 +15,7 @@ namespace KindHeartCharity.Repositories.Interface
         bool UpdateAsync(Post post);
 
         Task<Post> DeleteAsync(Guid id);
+
+        Task<List<Post>> SearchByName(string name);
     }
 }
