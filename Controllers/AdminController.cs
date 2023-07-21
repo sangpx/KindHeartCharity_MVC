@@ -120,6 +120,5 @@ namespace KindHeartCharity.Controllers
 
             return Ok(deletePost);
         }
-
     }
 }
