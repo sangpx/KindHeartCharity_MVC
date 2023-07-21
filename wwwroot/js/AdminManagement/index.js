@@ -140,31 +140,30 @@ window.onload = () => {
   loadPosts();
   handleSearchPost();
 };
-function handleSearchPost(){
-  const searchInput = document.querySelector('.search');
+function handleSearchPost() {
+  const searchInput = document.querySelector(".search");
   let debounceTimeout;
 
-  searchInput.addEventListener('input', function(){
+  searchInput.addEventListener("input", function () {
     clearTimeout(debounceTimeout);
-    console.log(searchInput.value);
-    debounceTimeout = setTimeout(function(){
+    debounceTimeout = setTimeout(function () {
       const searchTerm = searchInput.value.trim();
-      if(searchTerm ==''){
+      if (searchTerm == "") {
         loadPosts();
-      } else{
+      } else {
         searchPost(searchTerm);
       }
-    }, 500)
+    }, 500);
   });
 }
-function searchPost(name){
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", `/Admin/Search?name=${name}`, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        var posts = JSON.parse(xhr.responseText);
-        var postListHtml = `<table class="table table-striped">
+function searchPost(name) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", `/Admin/Search?name=${name}`, true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      var posts = JSON.parse(xhr.responseText);
+      var postListHtml = `<table class="table table-striped">
                     <thead class="thead-dark">
                         <tr>
                             <th style="width: 50px">
@@ -191,8 +190,8 @@ function searchPost(name){
                     <tbody>
                 `;
 
-        posts.forEach((post, index) => {
-          postListHtml += `
+      posts.forEach((post, index) => {
+        postListHtml += `
                         <tr>
                             <td>
                                ${index + 1} 
@@ -237,14 +236,14 @@ function searchPost(name){
                             </div>
                         </div>
                     `;
-        });
-        postListHtml += "</tbody>" + "</table>";
-        var postList = document.getElementById("result");
-        postList.innerHTML = postListHtml;
-        handleDelete();
-      } else if (xhr.readyState === 4) {
-        alert("Failed to get post list.");
-      }
-    };
-    xhr.send();
-  }
+      });
+      postListHtml += "</tbody>" + "</table>";
+      var postList = document.getElementById("result");
+      postList.innerHTML = postListHtml;
+      handleDelete();
+    } else if (xhr.readyState === 4) {
+      alert("Failed to get post list.");
+    }
+  };
+  xhr.send();
+}
