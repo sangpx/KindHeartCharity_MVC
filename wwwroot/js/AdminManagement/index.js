@@ -18,6 +18,7 @@
           xhr.onreadystatechange = () => {
             if (xhr.readyState === XMLHttpRequest.DONE) {
               if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log("success");
                 handleLoad();
               } else {
                 console.log("Error deleting data.");
