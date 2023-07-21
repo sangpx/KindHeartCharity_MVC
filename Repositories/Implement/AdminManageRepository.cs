@@ -35,30 +35,6 @@ namespace KindHeartCharity.Repositories.Implement
           }
 
 
-          //   public bool UpdateAsync(Post post)
-          //   {
-          //        authDbContext.posts.Update(post);
-          //        authDbContext.SaveChangesAsync();
-          //        return true;
-          //   }
-
-
-
-          //public async Task<Post> UpdateAsync(Guid id, Post post)
-          //{
-          //    var postExisting = await authDbContext.posts.FirstOrDefaultAsync(p => p.PostId == id);
-          //    if (postExisting == null) { return null; }
-          //    postExisting.Content = post.Content;
-          //    postExisting.Description = post.Description;
-          //    postExisting.PostImageURL = post.PostImageURL;
-          //    postExisting.PostDate = post.PostDate;
-
-          //    await authDbContext.SaveChangesAsync();
-          //    return postExisting;
-
-          //}
-
-
           public async Task<Object> UpdateAsync(Guid PostId, string Content, string Description)
           {
                var postExisting = await authDbContext.posts.FindAsync(PostId);
@@ -86,6 +62,9 @@ namespace KindHeartCharity.Repositories.Implement
                await authDbContext.SaveChangesAsync();
                return postExisting;
           }
-
+          public async Task<List<Post>> SearchByName(string name)
+          {
+               return await authDbContext.posts.Where(p => EF.Functions.Like(p.Content, $"%{name}%")).ToListAsync();
+          }
      }
 }

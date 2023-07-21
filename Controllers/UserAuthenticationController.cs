@@ -73,21 +73,21 @@ namespace KindHeartCharity.Controllers
           /// </summary>
           /// <returns></returns>
 
-          //   public async Task<IActionResult> RegisterAdmin()
-          //   {
-          //        RegisterRequestDto registerRequestDto = new RegisterRequestDto
-          //        {
-          //             UserName = "Admin",
-          //             Email = "admin@gmail.com",
-          //             FirstName = "Admin",
-          //             LastName = "Admin",
-          //             Password = "Admin@123456"
-          //        };
-          //        registerRequestDto.Role = "admin";
-          //        var result = await authRepository.RegisterAsync(registerRequestDto);
+          public async Task<IActionResult> RegisterAdmin()
+          {
+               RegisterRequestDto registerRequestDto = new RegisterRequestDto
+               {
+                    UserName = "admin",
+                    Email = "admin@gmail.com",
+                    FirstName = "admin",
+                    LastName = "admin",
+                    Password = "admin@123456"
+               };
+               registerRequestDto.Role = "admin";
+               var result = await authRepository.RegisterAsync(registerRequestDto);
 
-          //        return Ok(result);
-          //   }
+               return Ok(result);
+          }
 
 
           /// <summary>
