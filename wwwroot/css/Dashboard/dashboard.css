@@ -55,6 +55,25 @@ tr:hover {
     background-color: #D6EEEE;
 }
 
+.modal {
+    margin-top: 200px;
+}
+
 .show {
+    display: block;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 1;
+}
+
+.overlay.show {
     display: block;
 }

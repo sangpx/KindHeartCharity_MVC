@@ -35,13 +35,12 @@ namespace KindHeartCharity.Repositories.Implement
         }
 
 
-        public bool UpdateAsync(Post post)
+        public async Task<bool> UpdateAsync(Post post)
         {
             authDbContext.posts.Update(post);
-            authDbContext.SaveChangesAsync();
+            await authDbContext.SaveChangesAsync();
             return true;
         }
-
 
         public async Task<Post?> DeleteAsync(Guid id)
         {
@@ -51,9 +50,52 @@ namespace KindHeartCharity.Repositories.Implement
             await authDbContext.SaveChangesAsync();
             return postExisting;
         }
+
+
         public async Task<List<Post>> SearchByName(string name)
         {
             return await authDbContext.posts.Where(p => EF.Functions.Like(p.Content, $"%{name}%")).ToListAsync();
+        }
+
+        public async Task<object> UpdatePost(Guid postId, string content, string description, DateTime postDate, IFormFile imageFile)
+        {
+            var post = await authDbContext.posts.FindAsync(postId);
+            if (post == null)
+            {
+                return new
+                {
+                    success = false,
+                    message = "Product not found"
+                };
+            }
+            post.PostDate = postDate;
+            post.Content = content;
+            post.Description = description;
+            post.PostId = postId;
+
+            if (imageFile != null)
+            {
+                var imagePath = Path.Combine(environment.WebRootPath, "Uploads");
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+                var filePath = Path.Combine(imagePath, fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(fileStream);
+                }
+                post.PostImageURL = fileName;
+            }
+
+            await authDbContext.SaveChangesAsync();
+
+            return new
+            {
+                success = true,
+                message = "Update Successfully!",
+                post
+            };
+
+
         }
     }
 }

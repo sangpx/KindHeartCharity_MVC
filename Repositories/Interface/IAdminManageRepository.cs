@@ -10,12 +10,14 @@ namespace KindHeartCharity.Repositories.Interface
 
         Task<Post> CreateAsync(Post post);
 
-        //Task CreateAsync(Post post, IFormFile image);
+        Task<bool> UpdateAsync(Post post);
 
-        bool UpdateAsync(Post post);
+        Task<object> UpdatePost(Guid id, string Content, string Description, DateTime PostDate, IFormFile imageFile);
 
         Task<Post> DeleteAsync(Guid id);
 
         Task<List<Post>> SearchByName(string name);
+
+
     }
 }
