@@ -77,11 +77,11 @@ namespace KindHeartCharity.Controllers
           {
                RegisterRequestDto registerRequestDto = new RegisterRequestDto
                {
-                    UserName = "admin",
+                    UserName = "Admin",
                     Email = "admin@gmail.com",
-                    FirstName = "admin",
-                    LastName = "admin",
-                    Password = "admin@123456"
+                    FirstName = "Admin",
+                    LastName = "Admin",
+                    Password = "Admin@123456"
                };
                registerRequestDto.Role = "admin";
                var result = await authRepository.RegisterAsync(registerRequestDto);

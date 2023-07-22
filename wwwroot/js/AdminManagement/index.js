@@ -55,7 +55,6 @@ var handleUpdate = () => {
       updateModal.classList.add("show");
       overlay.classList.add("show");
       var postId = item.getAttribute("data-post-id");
-      console.log("postId: ", postId);
       try {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", `/Admin/GetById/${postId}`, true);
@@ -66,53 +65,30 @@ var handleUpdate = () => {
               const res = JSON.parse(xhr.responseText);
               content.value = res.content;
               description.value = res.description;
-              postImage.value = res.postImageURL;
               postDate.value = res.postDate;
+              console.log(res.postId);
 
               btnUpdateConfirm.addEventListener("click", () => {
                 try {
-                  // const dataUpdate = {
-                  //   content: content.value,
-                  //   description: description.value,
-                  //   postImage: postImage.value,
-                  //   postDate: postDate.value,
-                  // };
-                  // const jsonDataUpdate = JSON.stringify(dataUpdate);
-                  // console.log(jsonDataUpdate);
-                  // var xhr = new XMLHttpRequest();
-                  // xhr.open("PUT", `/Admin/UpdateConfirm/${postId}`, true);
-                  // xhr.setRequestHeader("Content-Type", "application/json");
-                  // xhr.onreadystatechange = () => {
-                  //   if (xhr.readyState === XMLHttpRequest.DONE) {
-                  //     if (xhr.readyState === 4 && xhr.status === 200) {
-                  //       const res = JSON.parse(xhr.responseText);
-                  //       console.log("ok:", res);
-                  //     } else {
-                  //       console.log("Error updating data.");
-                  //       //031af44f-ae1a-4da5-b87a-08db89348006
-                  //     }
-                  //   }
-                  // };
-                  // xhr.send(jsonDataUpdate);
+                  var formData = new FormData();
 
-                  var requestData = {
-                    postId: res.postId,
-                    content: content.value,
-                    description: description.value,
-                    postImageURL: postImage.value,
-                    postDate: postDate.value,
-                  };
+                  formData.append("postId", res.postId);
+                  formData.append("content", content.value);
+                  formData.append("description", description.value);
+                  formData.append("imageFile", postImage.files[0]);
+                  formData.append("postDate", postDate.value);
 
                   $.ajax({
-                    url: "/Admin/UpdateConfirm/",
-                    type: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify(requestData),
-                    success: function (res) {
-                      console.log(res);
+                    url: "/Admin/UpdatePost/",
+                    type: "PUT",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (result) {
+                      console.log(result);
+                      handleLoad();
                     },
                     error: function (error) {
-                      console.error("API Update Failed!");
                       console.error(error);
                     },
                   });
@@ -239,14 +215,15 @@ var handleLoad = () => {
                                                   <label for="message-text" class="col-form-label">Description</label>
                                                   <input type="text" class="form-control input-description">
                                               </div>
-                                                <div class="mb-3">
-                                                  <label for="message-text" class="col-form-label">Post Image URL</label>
-                                                  <input type="text" class="form-control input-image">
+                                              <div class="mb-3">
+                                                  <label for="message-text" class="col-form-label">Image</label>
+                                                  <input type="file" class="form-control input-image">
                                               </div>
-                                                <div class="mb-3">
-                                                  <label for="message-text" class="col-form-label">Post Date</label>
+                                              <div class="mb-3">
+                                                  <label for="message-text" class="col-form-label">Date</label>
                                                   <input type="text" class="form-control input-date">
                                               </div>
+                                               
                                           </form>
                                       </div>
                                       <div class="modal-footer">  
@@ -277,7 +254,8 @@ window.onload = () => {
   handleLoad();
   handleSearchPost();
 };
-function handleSearchPost() {
+
+var handleSearchPost = () => {
   const searchInput = document.querySelector(".search");
   let debounceTimeout;
 
@@ -292,9 +270,9 @@ function handleSearchPost() {
       }
     }, 500);
   });
-}
+};
 
-function searchPost(name) {
+var searchPost = (name) => {
   var xhr = new XMLHttpRequest();
   xhr.open("GET", `/Admin/Search?name=${name}`, true);
   xhr.setRequestHeader("Content-Type", "application/json");
@@ -326,7 +304,7 @@ function searchPost(name) {
                          </tr>
                     </thead>
                     <tbody>
-                `;
+                  `;
 
       posts.forEach((post, index) => {
         postListHtml += `
@@ -356,12 +334,14 @@ function searchPost(name) {
                             </td>
                         </tr>
 
+
+                        <div class="overlay"></div>
+
                         <div class="modal" id="deleteModal">
                             <div class="modal-dialog">
                               <div class="modal-content">
                                 <div class="modal-header">
                                   <h4 class="modal-title">Are you sure?</h4>
-                               
                                 </div>
                                 <div class="modal-body">
                                   <p>Do you really want to delete these records? This process cannot be undone.</p>
@@ -384,4 +364,4 @@ function searchPost(name) {
     }
   };
   xhr.send();
-}
+};

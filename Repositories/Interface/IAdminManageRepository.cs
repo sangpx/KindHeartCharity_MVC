@@ -2,18 +2,22 @@
 
 namespace KindHeartCharity.Repositories.Interface
 {
-     public interface IAdminManageRepository
-     {
-          Task<List<Post>> GetAllAsync();
+    public interface IAdminManageRepository
+    {
+        Task<List<Post>> GetAllAsync();
 
-          Task<Post?> GetByIdAsync(Guid id);
+        Task<Post?> GetByIdAsync(Guid id);
 
-          Task<Post> CreateAsync(Post post);
+        Task<Post> CreateAsync(Post post);
 
-          Task<Object> UpdateAsync(Guid PostId, string Content, string Description);
+        Task<bool> UpdateAsync(Post post);
 
-          Task<Post> DeleteAsync(Guid id);
+        Task<object> UpdatePost(Guid id, string Content, string Description, DateTime PostDate, IFormFile imageFile);
 
-          Task<List<Post>> SearchByName(string name);
-     }
+        Task<Post> DeleteAsync(Guid id);
+
+        Task<List<Post>> SearchByName(string name);
+
+
+    }
 }
