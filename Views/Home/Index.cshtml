@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var posts = ViewData["posts"];
 }
+@model IEnumerable<KindHeartCharity.Models.Domain.Post>
 
    <main>
 
@@ -399,12 +401,14 @@
                         <h2>Latest News</h2>
                     </div>
 
+                @foreach (var item in Model)
+                {
                     <div class="col-lg-7 col-12">
                         <div class="news-block">
                             <div class="news-block-top">
                                 <a href="news-detail.html">
-                                    <img src="/images/news/medium-shot-volunteers-with-clothing-donations.jpg"
-                                        class="news-image img-fluid" alt="">
+                                    <img src="/Uploads/@item.PostImageURL"
+                                         class="news-image img-fluid" alt="">
                                 </a>
 
                                 <div class="news-category-block">
@@ -423,7 +427,7 @@
                                     <div class="news-block-date">
                                         <p>
                                             <i class="bi-calendar4 custom-icon me-1"></i>
-                                            October 12, 2036
+                                            @item.PostDate
                                         </p>
                                     </div>
 
@@ -443,13 +447,17 @@
                                 </div>
 
                                 <div class="news-block-title mb-2">
-                                    <h4><a href="news-detail.html" class="news-block-title-link">Clothing donation to
-                                            urban area</a></h4>
+                                    <h4>
+                                        <a href="news-detail.html" class="news-block-title-link">
+                                           @item.Content    
+                                        </a>
+                                    </h4>
                                 </div>
 
                                 <div class="news-block-body">
-                                    <p>Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito
-                                        Professional charity theme based on Bootstrap</p>
+                                    <p>
+                                       @item.Description
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -458,7 +466,7 @@
                             <div class="news-block-top">
                                 <a href="news-detail.html">
                                     <img src="/images/news/medium-shot-people-collecting-foodstuff.jpg"
-                                        class="news-image img-fluid" alt="">
+                                         class="news-image img-fluid" alt="">
                                 </a>
 
                                 <div class="news-category-block">
@@ -501,17 +509,23 @@
                                 </div>
 
                                 <div class="news-block-title mb-2">
-                                    <h4><a href="news-detail.html" class="news-block-title-link">Food donation area</a>
+                                    <h4>
+                                        <a href="news-detail.html" class="news-block-title-link">Food donation area</a>
                                     </h4>
                                 </div>
 
                                 <div class="news-block-body">
-                                    <p>Sed leo nisl, posuere at molestie ac, suscipit auctor mauris. Etiam quis metus
-                                        elementum, tempor risus vel, condimentum orci</p>
+                                    <p>
+                                        Sed leo nisl, posuere at molestie ac, suscipit auctor mauris. Etiam quis metus
+                                        elementum, tempor risus vel, condimentum orci
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                }
+
+                   
 
                     <div class="col-lg-4 col-12 mx-auto">
                         <form class="custom-form search-form" action="#" method="get" role="form">
